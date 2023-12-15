@@ -1,6 +1,7 @@
 (function () {
 	//copy-paste in console
 
+	//globals
 	var from_language = "en";
 	var to_language = "it";
 	var rapid_api_key = "RAPIDAPI_KEY";
@@ -30,7 +31,7 @@
 					// Check if the "current" class is added
 					if (element.classList.contains('current')) {
 						// Trigger your custom event or call a function
-						translateSubtitles(element, from_language, to_language);
+						translateSubtitles(element);
 						console.log('Translating:', element.textContent.trim());
 					}
 				}
@@ -46,9 +47,15 @@
 		});
 
 		console.log('Observer Initialized');
+
+		translateTexts();
+
+		console.log('Text sent to Translator');
+
+
 	}
 
-	async function translateSubtitles(element, from_language, to_language) {
+	async function translateSubtitles(element) {
 
 		var text = element.textContent.trim();
 
@@ -75,6 +82,13 @@
 		xhr.setRequestHeader('X-RapidAPI-Host', 'microsoft-translator-text.p.rapidapi.com');
 
 		xhr.send(data);
+	}
+
+	async function translateTexts() {
+		var elements = $('p');
+		elements.each((index, element) => {
+			translateSubtitles(element);
+		});
 	}
 
 })();
