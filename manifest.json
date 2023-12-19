@@ -6,8 +6,7 @@
     "description": "Plugin used to translate Edx explanation videos. It is not official as a plugin and is free",
     "version": "1.0",
     "action": {
-        "from_language": "en",
-        "to_language": "it",
+        "default_popup": "popup.html",
         "default_icon": {
             "D-C-R": "d-c-r.png"
         }
@@ -23,14 +22,14 @@
                 "<all_urls>"
             ],
             "js": [
-                "translator.js"
+                "translatorExtension.js"
             ],
             "run_at": "document_end",
             "all_frames": true
         }
     ],
     "host_permissions": [
-        "https://rapidapi.com/"
+        "https://microsoft-translator-text.p.rapidapi.com/"
     ],
     "icons": {
         "D-C-R": "d-c-r.png"
